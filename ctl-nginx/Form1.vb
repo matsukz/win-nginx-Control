@@ -13,6 +13,7 @@ Public Class Form1
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
         Button1.Enabled = False
+        Button1.Cursor = Cursors.WaitCursor
 
         If nginx_status_flag = True Then
             '起動中なので停止処理を実行する
@@ -27,6 +28,7 @@ Public Class Form1
                     "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error
                 )
                 Button1.Enabled = True
+                Button1.Cursor = Cursors.Hand
                 Exit Sub
             End If
         End If
@@ -34,6 +36,7 @@ Public Class Form1
         '開始/停止を確認するために待機する
         Threading.Thread.Sleep(3000)
         health.check()
+        Button1.Cursor = Cursors.Hand
         Button1.Enabled = True
 
     End Sub
