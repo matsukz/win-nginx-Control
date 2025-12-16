@@ -17,7 +17,15 @@ Public Class Form1
             exec_nginx_cmd.stop_cmd(nginxExe:=nginxExe, strPath:=strPath)
         Else
             '停止中なので開始処理をする
-            exec_nginx_cmd.start_cmd(nginxExe:=nginxExe, strPath:=strPath)
+            If exec_nginx_cmd.syntax_test(nginxExe:=nginxExe, strPath:=strPath) = True Then
+                exec_nginx_cmd.start_cmd(nginxExe:=nginxExe, strPath:=strPath)
+            Else
+                MessageBox.Show(
+                    "nginxの設定に誤りがあるため起動できません。" & vbCrLf & "「操作」からシンタックスチェックを実行してエラーを修正してください",
+                    "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error
+                )
+                Exit Sub
+            End If
         End If
 
         '開始/停止を確認するために待機する
