@@ -12,18 +12,21 @@ Public Class Form1
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
+        Button1.Enabled = False
+
         If nginx_status_flag = True Then
             '起動中なので停止処理を実行する
             exec_nginx_cmd.stop_cmd(nginxExe:=nginxExe, strPath:=strPath)
         Else
             '停止中なので開始処理をする
-            If exec_nginx_cmd.syntax_test(nginxExe:=nginxExe, strPath:=strPath) = True Then
+            If exec_nginx_cmd.syntax_test(nginxExe:=nginxExe, strPath:=strPath, result_window:=False) Then
                 exec_nginx_cmd.start_cmd(nginxExe:=nginxExe, strPath:=strPath)
             Else
                 MessageBox.Show(
                     "nginxの設定に誤りがあるため起動できません。" & vbCrLf & "「操作」からシンタックスチェックを実行してエラーを修正してください",
                     "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error
                 )
+                Button1.Enabled = True
                 Exit Sub
             End If
         End If
@@ -31,7 +34,7 @@ Public Class Form1
         '開始/停止を確認するために待機する
         Threading.Thread.Sleep(3000)
         health.check()
-        'nginx_check_status()
+        Button1.Enabled = True
 
     End Sub
 
@@ -44,13 +47,12 @@ Public Class Form1
         End If
 
         '起動時に状態を確認する
-        'nginx_check_status()
         health.check()
 
     End Sub
 
     Private Sub 設定ファイルの確認nginxtToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 設定ファイルの確認nginxtToolStripMenuItem.Click
-        exec_nginx_cmd.syntax_test(nginxExe:=nginxExe, strPath:=strPath)
+        exec_nginx_cmd.syntax_test(nginxExe:=nginxExe, strPath:=strPath, result_window:=True)
     End Sub
 
     Private Sub 状態を再取得ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 状態を再取得ToolStripMenuItem.Click

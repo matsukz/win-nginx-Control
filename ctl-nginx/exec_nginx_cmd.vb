@@ -22,7 +22,7 @@ Module exec_nginx_cmd
         Process.Start(nginx_stop)
     End Sub
 
-    Function syntax_test(ByVal nginxExe As String, ByVal strPath As String)
+    Function syntax_test(ByVal nginxExe As String, ByVal strPath As String, ByVal result_window As Boolean)
 
         Dim test_result As Boolean = False
 
@@ -52,21 +52,27 @@ Module exec_nginx_cmd
                 Dim ok As Boolean = (p.ExitCode = 0) OrElse output.ToLowerInvariant().Contains("test is successful")
 
                 If ok Then
-                    MessageBox.Show(If(output = "", "OK (no output)", output),
+                    If result_window Then
+                        MessageBox.Show(If(output = "", "OK (no output)", output),
                                     "Nginx 設定テスト：正常",
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Information)
+                    End If
                     test_result = True
                 Else
-                    MessageBox.Show(If(output = "", $"Error (ExitCode={p.ExitCode})", output),
+                    If result_window Then
+                        MessageBox.Show(If(output = "", $"Error (ExitCode={p.ExitCode})", output),
                                     "Nginx 設定テスト：エラー",
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Error)
+                    End If
                     test_result = False
                 End If
             End Using
         Catch ex As Exception
-            MessageBox.Show(ex.ToString(), "実行エラー", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            If result_window Then
+                MessageBox.Show(ex.ToString(), "実行エラー", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
             test_result = False
         End Try
 

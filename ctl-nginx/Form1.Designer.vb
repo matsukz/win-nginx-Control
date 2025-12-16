@@ -39,6 +39,7 @@ Partial Class Form1
         Me.Nginxconfを開くToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PIDから強制終了ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ソースコードGithubcomToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -47,7 +48,7 @@ Partial Class Form1
         Me.Button1.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Button1.Font = New System.Drawing.Font("MS UI Gothic", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.Button1.Location = New System.Drawing.Point(16, 68)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(4)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(267, 71)
         Me.Button1.TabIndex = 0
@@ -116,7 +117,7 @@ Partial Class Form1
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ファイルToolStripMenuItem, Me.操作ToolStripMenuItem, Me.AboutToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(575, 30)
+        Me.MenuStrip1.Size = New System.Drawing.Size(575, 28)
         Me.MenuStrip1.TabIndex = 6
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -124,63 +125,70 @@ Partial Class Form1
         '
         Me.ファイルToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.コマンドプロンプトToolStripMenuItem, Me.エクスプローラーで開くToolStripMenuItem, Me.ウィンドウを閉じるToolStripMenuItem})
         Me.ファイルToolStripMenuItem.Name = "ファイルToolStripMenuItem"
-        Me.ファイルToolStripMenuItem.Size = New System.Drawing.Size(65, 26)
+        Me.ファイルToolStripMenuItem.Size = New System.Drawing.Size(65, 24)
         Me.ファイルToolStripMenuItem.Text = "ファイル"
         '
         'コマンドプロンプトToolStripMenuItem
         '
         Me.コマンドプロンプトToolStripMenuItem.Name = "コマンドプロンプトToolStripMenuItem"
-        Me.コマンドプロンプトToolStripMenuItem.Size = New System.Drawing.Size(222, 26)
+        Me.コマンドプロンプトToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
         Me.コマンドプロンプトToolStripMenuItem.Text = "コマンドプロンプトを開く"
         '
         'エクスプローラーで開くToolStripMenuItem
         '
         Me.エクスプローラーで開くToolStripMenuItem.Name = "エクスプローラーで開くToolStripMenuItem"
-        Me.エクスプローラーで開くToolStripMenuItem.Size = New System.Drawing.Size(222, 26)
+        Me.エクスプローラーで開くToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
         Me.エクスプローラーで開くToolStripMenuItem.Text = "エクスプローラーで開く"
         '
         'ウィンドウを閉じるToolStripMenuItem
         '
         Me.ウィンドウを閉じるToolStripMenuItem.Name = "ウィンドウを閉じるToolStripMenuItem"
-        Me.ウィンドウを閉じるToolStripMenuItem.Size = New System.Drawing.Size(222, 26)
+        Me.ウィンドウを閉じるToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
         Me.ウィンドウを閉じるToolStripMenuItem.Text = "ウィンドウを閉じる"
         '
         '操作ToolStripMenuItem
         '
         Me.操作ToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.状態を再取得ToolStripMenuItem, Me.設定ファイルの確認nginxtToolStripMenuItem, Me.Nginxconfを開くToolStripMenuItem, Me.PIDから強制終了ToolStripMenuItem})
         Me.操作ToolStripMenuItem.Name = "操作ToolStripMenuItem"
-        Me.操作ToolStripMenuItem.Size = New System.Drawing.Size(53, 26)
+        Me.操作ToolStripMenuItem.Size = New System.Drawing.Size(53, 24)
         Me.操作ToolStripMenuItem.Text = "操作"
         '
         '状態を再取得ToolStripMenuItem
         '
         Me.状態を再取得ToolStripMenuItem.Name = "状態を再取得ToolStripMenuItem"
-        Me.状態を再取得ToolStripMenuItem.Size = New System.Drawing.Size(199, 26)
+        Me.状態を再取得ToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
         Me.状態を再取得ToolStripMenuItem.Text = "状態を再取得"
         '
         '設定ファイルの確認nginxtToolStripMenuItem
         '
         Me.設定ファイルの確認nginxtToolStripMenuItem.Name = "設定ファイルの確認nginxtToolStripMenuItem"
-        Me.設定ファイルの確認nginxtToolStripMenuItem.Size = New System.Drawing.Size(199, 26)
+        Me.設定ファイルの確認nginxtToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
         Me.設定ファイルの確認nginxtToolStripMenuItem.Text = "シンタックスチェック"
         '
         'Nginxconfを開くToolStripMenuItem
         '
         Me.Nginxconfを開くToolStripMenuItem.Name = "Nginxconfを開くToolStripMenuItem"
-        Me.Nginxconfを開くToolStripMenuItem.Size = New System.Drawing.Size(199, 26)
+        Me.Nginxconfを開くToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
         Me.Nginxconfを開くToolStripMenuItem.Text = "nginx.confを開く"
         '
         'PIDから強制終了ToolStripMenuItem
         '
         Me.PIDから強制終了ToolStripMenuItem.Name = "PIDから強制終了ToolStripMenuItem"
-        Me.PIDから強制終了ToolStripMenuItem.Size = New System.Drawing.Size(199, 26)
+        Me.PIDから強制終了ToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
         Me.PIDから強制終了ToolStripMenuItem.Text = "PIDから強制終了"
         '
         'AboutToolStripMenuItem
         '
+        Me.AboutToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ソースコードGithubcomToolStripMenuItem})
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(64, 26)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(64, 24)
         Me.AboutToolStripMenuItem.Text = "About"
+        '
+        'ソースコードGithubcomToolStripMenuItem
+        '
+        Me.ソースコードGithubcomToolStripMenuItem.Name = "ソースコードGithubcomToolStripMenuItem"
+        Me.ソースコードGithubcomToolStripMenuItem.Size = New System.Drawing.Size(241, 26)
+        Me.ソースコードGithubcomToolStripMenuItem.Text = "ソースコード(Github.com)"
         '
         'Form1
         '
@@ -195,7 +203,7 @@ Partial Class Form1
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.MainMenuStrip = Me.MenuStrip1
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "Form1"
         Me.Text = "NGINX状態確認"
         Me.MenuStrip1.ResumeLayout(False)
@@ -222,4 +230,5 @@ Partial Class Form1
     Friend WithEvents Nginxconfを開くToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents PIDから強制終了ToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents 状態を再取得ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ソースコードGithubcomToolStripMenuItem As ToolStripMenuItem
 End Class
