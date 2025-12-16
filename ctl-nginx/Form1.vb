@@ -34,7 +34,7 @@ Public Class Form1
         End If
 
         '開始/停止を確認するために待機する
-        Threading.Thread.Sleep(3000)
+        Threading.Thread.Sleep(1500)
         health.check()
         Button1.Cursor = Cursors.Hand
         Button1.Enabled = True
@@ -83,7 +83,7 @@ Public Class Form1
     End Sub
 
     Private Sub PIDから強制終了ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PIDから強制終了ToolStripMenuItem.Click
-
+        exec_nginx_cmd.force_quit()
     End Sub
 
     Private Sub ソースコードGithubcomToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ソースコードGithubcomToolStripMenuItem.Click
@@ -92,5 +92,9 @@ Public Class Form1
 
     Private Sub NGINXダウンロードサイトToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NGINXダウンロードサイトToolStripMenuItem.Click
         Process.Start("https://nginx.org/en/docs/windows.html")
+    End Sub
+
+    Private Sub ファイアウォールの設定ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ファイアウォールの設定ToolStripMenuItem.Click
+        Process.Start("C:\WINDOWS\system32\WF.msc")
     End Sub
 End Class

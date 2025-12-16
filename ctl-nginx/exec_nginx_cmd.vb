@@ -80,4 +80,22 @@ Module exec_nginx_cmd
 
     End Function
 
+    Sub force_quit()
+        Debug.Print("RUN")
+        Dim confirm As DialogResult = MessageBox.Show(
+            "強制終了を試みますか？" & vbCrLf & "セッションは強制終了し、ログの書き込みも停止します。",
+            "確認",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Exclamation
+        )
+
+        If confirm = DialogResult.Yes Then 'いいえ = True はい = Faslse
+            For Each p In Process.GetProcessesByName("nginx")
+                p.Kill()
+            Next
+            Threading.Thread.Sleep(1500)
+            health.check()
+        End If
+    End Sub
+
 End Module

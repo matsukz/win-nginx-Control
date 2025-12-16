@@ -9,9 +9,11 @@ Module health
             Form1.label_status.Text = "Inactive"
             Form1.label_status.BackColor = ColorTranslator.FromOle(RGB(255, 128, 128))
             Form1.label_pid.Text = ""
+            Form1.label_ports.Text = ""
             Form1.Button1.BackColor = ColorTranslator.FromOle(RGB(128, 255, 128))
             Form1.Button1.Text = "▶START"
             Form1.nginx_status_flag = False
+            Form1.PIDから強制終了ToolStripMenuItem.Enabled = False
         Else
             ' 動いてる（nginxは複数プロセスになることが多い）
             Dim display_pids As String = ""
@@ -34,6 +36,7 @@ Module health
             Form1.label_ports.Text = display_ports
             Form1.Button1.BackColor = ColorTranslator.FromOle(RGB(255, 128, 128))
             Form1.Button1.Text = "■STOP"
+            Form1.PIDから強制終了ToolStripMenuItem.Enabled = True
 
             Form1.nginx_status_flag = True
         End If
