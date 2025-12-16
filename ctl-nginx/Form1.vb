@@ -85,4 +85,12 @@ Public Class Form1
     Private Sub PIDから強制終了ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PIDから強制終了ToolStripMenuItem.Click
 
     End Sub
+
+    Private Sub ソースコードGithubcomToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ソースコードGithubcomToolStripMenuItem.Click
+        Process.Start("https://github.com/matsukz/win-nginx-Control")
+    End Sub
+
+    Private Sub NGINXダウンロードサイトToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NGINXダウンロードサイトToolStripMenuItem.Click
+        Process.Start("https://nginx.org/en/docs/windows.html")
+    End Sub
 End Class

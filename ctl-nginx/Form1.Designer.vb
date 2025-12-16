@@ -40,27 +40,31 @@ Partial Class Form1
         Me.PIDから強制終了ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ソースコードGithubcomToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.NGINXダウンロードサイトToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.label_ports = New System.Windows.Forms.Label()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Button1
         '
+        Me.Button1.BackColor = System.Drawing.SystemColors.Control
         Me.Button1.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.Button1.Font = New System.Drawing.Font("MS UI Gothic", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Button1.ForeColor = System.Drawing.SystemColors.ControlText
         Me.Button1.Location = New System.Drawing.Point(16, 68)
         Me.Button1.Margin = New System.Windows.Forms.Padding(4)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(267, 71)
         Me.Button1.TabIndex = 0
-        Me.Button1.Text = "▶開始"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.Button1.Text = "▶START"
+        Me.Button1.UseVisualStyleBackColor = False
         '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label1.Location = New System.Drawing.Point(311, 51)
+        Me.Label1.Location = New System.Drawing.Point(315, 51)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(59, 20)
@@ -75,15 +79,15 @@ Partial Class Form1
         Me.label_status.Location = New System.Drawing.Point(381, 48)
         Me.label_status.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.label_status.Name = "label_status"
-        Me.label_status.Size = New System.Drawing.Size(85, 24)
+        Me.label_status.Size = New System.Drawing.Size(95, 24)
         Me.label_status.TabIndex = 2
-        Me.label_status.Text = "起動中"
+        Me.label_status.Text = "Inactive"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label3.Location = New System.Drawing.Point(321, 95)
+        Me.Label3.Location = New System.Drawing.Point(325, 95)
         Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(49, 20)
@@ -108,9 +112,9 @@ Partial Class Form1
         Me.Label2.Location = New System.Drawing.Point(304, 140)
         Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(65, 20)
+        Me.Label2.Size = New System.Drawing.Size(70, 20)
         Me.Label2.TabIndex = 5
-        Me.Label2.Text = "ポート："
+        Me.Label2.Text = "Listen："
         '
         'MenuStrip1
         '
@@ -124,7 +128,7 @@ Partial Class Form1
         '
         'ファイルToolStripMenuItem
         '
-        Me.ファイルToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.コマンドプロンプトToolStripMenuItem, Me.エクスプローラーで開くToolStripMenuItem, Me.ウィンドウを閉じるToolStripMenuItem})
+        Me.ファイルToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.コマンドプロンプトToolStripMenuItem, Me.エクスプローラーで開くToolStripMenuItem, Me.NGINXダウンロードサイトToolStripMenuItem, Me.ウィンドウを閉じるToolStripMenuItem})
         Me.ファイルToolStripMenuItem.Name = "ファイルToolStripMenuItem"
         Me.ファイルToolStripMenuItem.Size = New System.Drawing.Size(65, 24)
         Me.ファイルToolStripMenuItem.Text = "ファイル"
@@ -132,19 +136,19 @@ Partial Class Form1
         'コマンドプロンプトToolStripMenuItem
         '
         Me.コマンドプロンプトToolStripMenuItem.Name = "コマンドプロンプトToolStripMenuItem"
-        Me.コマンドプロンプトToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
+        Me.コマンドプロンプトToolStripMenuItem.Size = New System.Drawing.Size(269, 26)
         Me.コマンドプロンプトToolStripMenuItem.Text = "コマンドプロンプトを開く"
         '
         'エクスプローラーで開くToolStripMenuItem
         '
         Me.エクスプローラーで開くToolStripMenuItem.Name = "エクスプローラーで開くToolStripMenuItem"
-        Me.エクスプローラーで開くToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
+        Me.エクスプローラーで開くToolStripMenuItem.Size = New System.Drawing.Size(269, 26)
         Me.エクスプローラーで開くToolStripMenuItem.Text = "エクスプローラーで開く"
         '
         'ウィンドウを閉じるToolStripMenuItem
         '
         Me.ウィンドウを閉じるToolStripMenuItem.Name = "ウィンドウを閉じるToolStripMenuItem"
-        Me.ウィンドウを閉じるToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
+        Me.ウィンドウを閉じるToolStripMenuItem.Size = New System.Drawing.Size(269, 26)
         Me.ウィンドウを閉じるToolStripMenuItem.Text = "ウィンドウを閉じる"
         '
         '操作ToolStripMenuItem
@@ -191,11 +195,29 @@ Partial Class Form1
         Me.ソースコードGithubcomToolStripMenuItem.Size = New System.Drawing.Size(241, 26)
         Me.ソースコードGithubcomToolStripMenuItem.Text = "ソースコード(Github.com)"
         '
+        'NGINXダウンロードサイトToolStripMenuItem
+        '
+        Me.NGINXダウンロードサイトToolStripMenuItem.Name = "NGINXダウンロードサイトToolStripMenuItem"
+        Me.NGINXダウンロードサイトToolStripMenuItem.Size = New System.Drawing.Size(269, 26)
+        Me.NGINXダウンロードサイトToolStripMenuItem.Text = "NGINXダウンロードサイトを開く"
+        '
+        'label_ports
+        '
+        Me.label_ports.AutoSize = True
+        Me.label_ports.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.label_ports.Location = New System.Drawing.Point(381, 136)
+        Me.label_ports.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.label_ports.Name = "label_ports"
+        Me.label_ports.Size = New System.Drawing.Size(55, 24)
+        Me.label_ports.TabIndex = 7
+        Me.label_ports.Text = "XXX"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(575, 192)
+        Me.Controls.Add(Me.label_ports)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.label_pid)
         Me.Controls.Add(Me.Label3)
@@ -232,4 +254,6 @@ Partial Class Form1
     Friend WithEvents PIDから強制終了ToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents 状態を再取得ToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ソースコードGithubcomToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents NGINXダウンロードサイトToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents label_ports As Label
 End Class
