@@ -97,4 +97,8 @@ Public Class Form1
     Private Sub ファイアウォールの設定ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ファイアウォールの設定ToolStripMenuItem.Click
         Process.Start("C:\WINDOWS\system32\WF.msc")
     End Sub
+
+    Private Sub NGINXバージョンを出力ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NGINXバージョンを出力ToolStripMenuItem.Click
+        exec_nginx_cmd.output_versions(strPath:=strPath, nginxExe:=nginxExe)
+    End Sub
 End Class

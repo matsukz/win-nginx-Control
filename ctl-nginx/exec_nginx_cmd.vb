@@ -81,7 +81,6 @@ Module exec_nginx_cmd
     End Function
 
     Sub force_quit()
-        Debug.Print("RUN")
         Dim confirm As DialogResult = MessageBox.Show(
             "強制終了を試みますか？" & vbCrLf & "セッションは強制終了し、ログの書き込みも停止します。",
             "確認",
@@ -96,6 +95,31 @@ Module exec_nginx_cmd
             Threading.Thread.Sleep(1500)
             health.check()
         End If
+    End Sub
+
+    Sub output_versions(ByVal strPath As String, ByVal nginxExe As String)
+        Dim psi As New ProcessStartInfo() With {
+            .FileName = nginxExe,
+            .Arguments = "-V",
+            .WorkingDirectory = strPath,
+            .UseShellExecute = False,
+            .CreateNoWindow = True,
+            .RedirectStandardOutput = True,
+            .RedirectStandardError = True,
+            .StandardOutputEncoding = Encoding.UTF8,
+            .StandardErrorEncoding = Encoding.UTF8
+        }
+
+        Using p As Process = Process.Start(psi)
+            ' nginx -v は stderr に出る
+            Dim stdout As String = p.StandardOutput.ReadToEnd()
+            Dim stderr As String = p.StandardError.ReadToEnd()
+            p.WaitForExit()
+
+            Dim output As String = (stdout & stderr).Trim()
+
+            MessageBox.Show(output, "nginx version", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End Using
     End Sub
 
 End Module

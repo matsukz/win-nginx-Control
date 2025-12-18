@@ -32,17 +32,19 @@ Partial Class Form1
         Me.ファイルToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.コマンドプロンプトToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.エクスプローラーで開くToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ファイアウォールの設定ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NGINXダウンロードサイトToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ウィンドウを閉じるToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.操作ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.状態を再取得ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.設定ファイルの確認nginxtToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Nginxconfを開くToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.NGINXを再起動ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PIDから強制終了ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ソースコードGithubcomToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.label_ports = New System.Windows.Forms.Label()
-        Me.ファイアウォールの設定ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.NGINXバージョンを出力ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -141,6 +143,12 @@ Partial Class Form1
         Me.エクスプローラーで開くToolStripMenuItem.Size = New System.Drawing.Size(217, 22)
         Me.エクスプローラーで開くToolStripMenuItem.Text = "エクスプローラーで開く"
         '
+        'ファイアウォールの設定ToolStripMenuItem
+        '
+        Me.ファイアウォールの設定ToolStripMenuItem.Name = "ファイアウォールの設定ToolStripMenuItem"
+        Me.ファイアウォールの設定ToolStripMenuItem.Size = New System.Drawing.Size(217, 22)
+        Me.ファイアウォールの設定ToolStripMenuItem.Text = "ファイアウォールの設定"
+        '
         'NGINXダウンロードサイトToolStripMenuItem
         '
         Me.NGINXダウンロードサイトToolStripMenuItem.Name = "NGINXダウンロードサイトToolStripMenuItem"
@@ -155,7 +163,7 @@ Partial Class Form1
         '
         '操作ToolStripMenuItem
         '
-        Me.操作ToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.状態を再取得ToolStripMenuItem, Me.設定ファイルの確認nginxtToolStripMenuItem, Me.Nginxconfを開くToolStripMenuItem, Me.PIDから強制終了ToolStripMenuItem})
+        Me.操作ToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.状態を再取得ToolStripMenuItem, Me.設定ファイルの確認nginxtToolStripMenuItem, Me.Nginxconfを開くToolStripMenuItem, Me.NGINXバージョンを出力ToolStripMenuItem, Me.NGINXを再起動ToolStripMenuItem, Me.PIDから強制終了ToolStripMenuItem})
         Me.操作ToolStripMenuItem.Name = "操作ToolStripMenuItem"
         Me.操作ToolStripMenuItem.Size = New System.Drawing.Size(43, 20)
         Me.操作ToolStripMenuItem.Text = "操作"
@@ -163,25 +171,31 @@ Partial Class Form1
         '状態を再取得ToolStripMenuItem
         '
         Me.状態を再取得ToolStripMenuItem.Name = "状態を再取得ToolStripMenuItem"
-        Me.状態を再取得ToolStripMenuItem.Size = New System.Drawing.Size(161, 22)
+        Me.状態を再取得ToolStripMenuItem.Size = New System.Drawing.Size(187, 22)
         Me.状態を再取得ToolStripMenuItem.Text = "状態を再取得"
         '
         '設定ファイルの確認nginxtToolStripMenuItem
         '
         Me.設定ファイルの確認nginxtToolStripMenuItem.Name = "設定ファイルの確認nginxtToolStripMenuItem"
-        Me.設定ファイルの確認nginxtToolStripMenuItem.Size = New System.Drawing.Size(161, 22)
+        Me.設定ファイルの確認nginxtToolStripMenuItem.Size = New System.Drawing.Size(187, 22)
         Me.設定ファイルの確認nginxtToolStripMenuItem.Text = "シンタックスチェック"
         '
         'Nginxconfを開くToolStripMenuItem
         '
         Me.Nginxconfを開くToolStripMenuItem.Name = "Nginxconfを開くToolStripMenuItem"
-        Me.Nginxconfを開くToolStripMenuItem.Size = New System.Drawing.Size(161, 22)
+        Me.Nginxconfを開くToolStripMenuItem.Size = New System.Drawing.Size(187, 22)
         Me.Nginxconfを開くToolStripMenuItem.Text = "nginx.confを開く"
+        '
+        'NGINXを再起動ToolStripMenuItem
+        '
+        Me.NGINXを再起動ToolStripMenuItem.Name = "NGINXを再起動ToolStripMenuItem"
+        Me.NGINXを再起動ToolStripMenuItem.Size = New System.Drawing.Size(187, 22)
+        Me.NGINXを再起動ToolStripMenuItem.Text = "NGINXを再起動"
         '
         'PIDから強制終了ToolStripMenuItem
         '
         Me.PIDから強制終了ToolStripMenuItem.Name = "PIDから強制終了ToolStripMenuItem"
-        Me.PIDから強制終了ToolStripMenuItem.Size = New System.Drawing.Size(161, 22)
+        Me.PIDから強制終了ToolStripMenuItem.Size = New System.Drawing.Size(187, 22)
         Me.PIDから強制終了ToolStripMenuItem.Text = "PIDから強制終了"
         '
         'AboutToolStripMenuItem
@@ -207,11 +221,11 @@ Partial Class Form1
         Me.label_ports.TabIndex = 7
         Me.label_ports.Text = "XXXX" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "XXXX"
         '
-        'ファイアウォールの設定ToolStripMenuItem
+        'NGINXバージョンを出力ToolStripMenuItem
         '
-        Me.ファイアウォールの設定ToolStripMenuItem.Name = "ファイアウォールの設定ToolStripMenuItem"
-        Me.ファイアウォールの設定ToolStripMenuItem.Size = New System.Drawing.Size(217, 22)
-        Me.ファイアウォールの設定ToolStripMenuItem.Text = "ファイアウォールの設定"
+        Me.NGINXバージョンを出力ToolStripMenuItem.Name = "NGINXバージョンを出力ToolStripMenuItem"
+        Me.NGINXバージョンを出力ToolStripMenuItem.Size = New System.Drawing.Size(187, 22)
+        Me.NGINXバージョンを出力ToolStripMenuItem.Text = "NGINXバージョンを出力"
         '
         'Form1
         '
@@ -257,4 +271,6 @@ Partial Class Form1
     Friend WithEvents NGINXダウンロードサイトToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents label_ports As Label
     Friend WithEvents ファイアウォールの設定ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents NGINXを再起動ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents NGINXバージョンを出力ToolStripMenuItem As ToolStripMenuItem
 End Class
