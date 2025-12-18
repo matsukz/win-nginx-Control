@@ -14,6 +14,7 @@ Module health
             Form1.Button1.Text = "▶START"
             Form1.nginx_status_flag = False
             Form1.PIDから強制終了ToolStripMenuItem.Enabled = False
+            Form1.NGINXを再起動ToolStripMenuItem.Enabled = False
         Else
             ' 動いてる（nginxは複数プロセスになることが多い）
             Dim display_pids As String = ""
@@ -37,6 +38,7 @@ Module health
             Form1.Button1.BackColor = ColorTranslator.FromOle(RGB(255, 128, 128))
             Form1.Button1.Text = "■STOP"
             Form1.PIDから強制終了ToolStripMenuItem.Enabled = True
+            Form1.NGINXを再起動ToolStripMenuItem.Enabled = True
 
             Form1.nginx_status_flag = True
         End If

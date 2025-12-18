@@ -15,22 +15,22 @@ Public Class Form1
         Button1.Enabled = False
         Button1.Cursor = Cursors.WaitCursor
 
+        If Not exec_nginx_cmd.syntax_test(nginxExe:=nginxExe, strPath:=strPath, result_window:=False) Then
+            MessageBox.Show(
+                "nginxの設定に誤りがあるため操作できません。" & vbCrLf & "「操作」からシンタックスチェックを実行してエラーを修正してください",
+                "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error
+            )
+            Button1.Enabled = True
+            Button1.Cursor = Cursors.Hand
+            Exit Sub
+        End If
+
         If nginx_status_flag = True Then
             '起動中なので停止処理を実行する
             exec_nginx_cmd.stop_cmd(nginxExe:=nginxExe, strPath:=strPath)
         Else
             '停止中なので開始処理をする
-            If exec_nginx_cmd.syntax_test(nginxExe:=nginxExe, strPath:=strPath, result_window:=False) Then
-                exec_nginx_cmd.start_cmd(nginxExe:=nginxExe, strPath:=strPath)
-            Else
-                MessageBox.Show(
-                    "nginxの設定に誤りがあるため起動できません。" & vbCrLf & "「操作」からシンタックスチェックを実行してエラーを修正してください",
-                    "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error
-                )
-                Button1.Enabled = True
-                Button1.Cursor = Cursors.Hand
-                Exit Sub
-            End If
+            exec_nginx_cmd.start_cmd(nginxExe:=nginxExe, strPath:=strPath)
         End If
 
         '開始/停止を確認するために待機する
@@ -100,5 +100,21 @@ Public Class Form1
 
     Private Sub NGINXバージョンを出力ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NGINXバージョンを出力ToolStripMenuItem.Click
         exec_nginx_cmd.output_versions(strPath:=strPath, nginxExe:=nginxExe)
+    End Sub
+
+    Private Sub NGINXを再起動ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NGINXを再起動ToolStripMenuItem.Click
+
+        Button1.Enabled = False
+
+        If exec_nginx_cmd.restart(nginxExe:=nginxExe, strPath:=strPath) Then
+            MessageBox.Show("nginx.exeの再起動に成功しました", "再起動", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Else
+            MessageBox.Show("nginx.exeの再起動は中断されました", "再起動", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        End If
+
+        'いじったボタンの状態を戻す
+        Button1.Cursor = Cursors.Hand
+        Button1.Enabled = True
+
     End Sub
 End Class

@@ -1,4 +1,5 @@
-﻿Imports System.Text
+﻿Imports System.Runtime.InteropServices.WindowsRuntime
+Imports System.Text
 
 Module exec_nginx_cmd
     Sub start_cmd(ByVal nginxExe As String, ByVal strPath As String)
@@ -121,5 +122,45 @@ Module exec_nginx_cmd
             MessageBox.Show(output, "nginx version", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End Using
     End Sub
+
+    Function restart(ByVal strPath As String, ByVal nginxExe As String) As Boolean
+
+        If Not syntax_test(nginxExe:=nginxExe, strPath:=strPath, result_window:=False) Then
+            MessageBox.Show(
+                "nginxの設定に誤りがあるため再起動できません。" & vbCrLf & "「操作」からシンタックスチェックを実行してエラーを修正してください",
+                "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error
+            )
+
+            Return False
+
+        End If
+
+        Dim confirm As DialogResult = MessageBox.Show(
+            "再起動を試みますか？" & vbCrLf & "接続中のセッションは切断されます。",
+            "確認",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Exclamation
+        )
+
+        '選択肢で拒否した場合Falseを返して処理中断
+        If confirm = DialogResult.No Then Return False
+
+        Form1.Button1.Cursor = Cursors.WaitCursor
+
+        Dim psi As New ProcessStartInfo() With {
+            .FileName = nginxExe,
+            .Arguments = "-s reload",
+            .WorkingDirectory = strPath,
+            .UseShellExecute = False,
+            .CreateNoWindow = True
+        }
+        Process.Start(psi)
+
+        Threading.Thread.Sleep(1500)
+        health.check()
+
+        Return True
+
+    End Function
 
 End Module
