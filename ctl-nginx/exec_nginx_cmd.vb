@@ -1,5 +1,4 @@
-﻿Imports System.Runtime.InteropServices.WindowsRuntime
-Imports System.Text
+﻿Imports System.Text
 
 Module exec_nginx_cmd
     Sub start_cmd(ByVal nginxExe As String, ByVal strPath As String)

@@ -1,7 +1,4 @@
-﻿Imports System.Diagnostics
-Imports System.Text
-
-Public Class Form1
+﻿Public Class Form1
 
     '起動FLAG (True = 起動中 Flase = 停止)
     Public Shared nginx_status_flag As Boolean = False
